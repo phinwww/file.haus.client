@@ -1,45 +1,124 @@
 :root {
-    font-size: 16px;
+    --primary-color: #06f;
+    --secondary-color: #28f;
+    --background-color: #222;
+    --text-color: #fff;
+    --button-glow-color: rgba(0, 102, 255, 0.5);
+    --button-hover-glow-color: rgba(0, 40, 255, 0.5);
+    --font-size: 16px;
 }
 
 body {
     margin: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
 }
 
 main {
     margin: 15px auto;
-    background-color: white;
+    background-color: var(--background-color);
     border-radius: 15px;
-    padding: 0px;
+    padding: 20px;
     width: 50%;
     text-align: center;
 }
 
-#file-input {
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+input[type="file"] {
     display: none;
 }
 
-label[for='file-input'] {
-    color: white;
-    background-color: #06f;
+label[for="filetoupload"] {
+    color: var(--text-color);
+    background-color: var(--primary-color);
     padding: 10px 15px;
     font-weight: bold;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-label[for='file-input']:hover {
-    background-color: #28f;
+label[for="filetoupload"]:hover {
+    background-color: var(--secondary-color);
+    box-shadow: 0 0 10px var(--button-hover-glow-color);
 }
 
-#file-input:disabled + label[for='file-input'] {
-    background-color: #aaa;
-    cursor: default;
-}
-
-#upload-progress {
+progress {
     visibility: hidden;
+    width: 100%;
+    height: 20px;
+    margin-bottom: 15px;
 }
 
-#upload-progress.visible {
+progress.visible {
     visibility: visible;
+}
+
+p.disclaimer {
+    font-size: 14px;
+    margin-top: 30px;
+}
+
+a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: text-decoration 0.3s;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Button Glow Effect */
+label[for="filetoupload"] {
+    position: relative;
+    display: inline-block;
+    color: var(--text-color);
+    background-color: var(--primary-color);
+    padding: 10px 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    overflow: hidden;
+}
+
+label[for="filetoupload"]:hover {
+    background-color: var(--secondary-color);
+}
+
+label[for="filetoupload"]:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+label[for="filetoupload"]:hover:after {
+    opacity: 1;
+    box-shadow: 0 0 10px var(--button-hover-glow-color);
+}
+p.xmr-address {
+    position: relative;
+    display: inline-block;
+    padding: 5px;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    margin: 10px 0;
+}
+/* Additional CSS styles */
+.xmr-address {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
 }

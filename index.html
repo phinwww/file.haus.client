@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>file.haus - Anonymous File Uploader</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main>
+        <h1>file.haus</h1>
+        <p>
+            <input type="file" id="filetoupload"><br>
+            <label for="filetoupload">Choose a file to upload</label>
+        </p>
+        <p>
+            <progress id="upload-progress"></progress>
+        </p>
+        <p id="message"></p>
+        <p>Support anonymous file sharing:</p>
+        <p>Donate to our XMR address:</p>
+        <p id="message"></p>
+        <p class="xmr-address" id="xmrAddress">471fHHoNZi2dccVGyxNs8F8tWQUMg3Wy6iF8PhBZBs2MJ3TSSS8u3UhHiGBLNAhFJxayKvptgkicuSL6C7bdMKDWEECEvpR
+                <button id="copyButton">Copy</button>
+            </p>
+        <p class="disclaimer">2023-7-7: The new uploader (with the progress bar) is here. If you want to use the JavaScript-less version, we have it available.</p>
+        <p><a href="https://file.haus/nojs.php">JavaScript-less uploader</a> / <a href="https://file.haus">Clearnet</a> / <a href="http://fileha3hjvudqs2moembtaegnpjo5ptec3tomf5dlxx6ydwtajkkahyd.onion">Tor</a></p>
+    </main>
+    <script src="file-upload-progress-bar.js"></script>
+    <script>
+        const copyButton = document.getElementById("copyButton");
+        const xmrAddress = document.getElementById("xmrAddress");
+
+        copyButton.addEventListener("click", function() {
+            const tempInput = document.createElement("input");
+            tempInput.value = xmrAddress.textContent;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+            alert("XMR address copied to clipboard!");
+        });
+    </script>
+</body>
+</html>
